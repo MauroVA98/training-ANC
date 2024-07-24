@@ -1,0 +1,53 @@
+# Run Parameters
+logging: False
+save: False
+num_workers: 0
+prog_freq: 5
+test_freq: 10
+plot_freq: 100
+epochs: 500
+
+# data Processing
+shuffle: True                                 # shuffle data
+amodel: True                                 # aerodynamic model
+
+smoothing:                                   # types: 1Euro, butter, ma
+    velocity:
+      type: "butter"
+      cutoff: [1.0, 1.0, 1.0]
+      order: 4
+      filtfilt: True
+    acceleration:
+      type: "butter"
+      cutoff: [ 1.0, 1.0, 1.0 ]
+      order: 4
+      filtfilt: True
+
+finite_diff:
+  {type: "central",
+   order: 4,
+   var: False}
+
+# Hyperparameters
+lr:                                         # learning rate phi & h network
+  {phi: 5.0e-4,
+   h: 1.0e-3}
+K_shot: 512                                # number of K-shot for least square on a (-1 = Entire Dataset)
+phi_shot: 128                               # batch size for train Phi
+alpha: 0.0                                  # adversarial regularization loss
+frequency_h: 0.5                            # how many times Phi is updated between H updates, on average
+SN: True                                    # maximum single layer spectral norm of Phi
+gamma: 10                                   # max 2-norm of a
+classification_loss: "cross-entropy"        # discriminator (h) loss type
+
+# Phi and H Network Architecture
+ni: 11
+not: 4
+nc: 3
+
+Phi:
+    features: [50, 60, 50]
+    activations: ['relu', 'relu', 'relu']
+H:
+    features: [128]
+    activations: ['relu']

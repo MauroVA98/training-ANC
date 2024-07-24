@@ -1,0 +1,35 @@
+# Run Parameters
+logging: False
+save: False
+num_workers: 0
+prog_freq: 10
+val_freq: 10
+plot_freq: 100
+epochs: 1000
+
+# data Processing
+shuffle: True                               # shuffle data
+amodel: True                                # aerodynamic model
+smoothing:                                  # smoothing parameters
+  {type: "lpf", factor: 3}                  # types: lpf, ewma, ma
+
+# Hyperparameters
+K_shot: 128                                 # number of K-shot for least square on a
+phi_shot: 256                               # batch size for train Phi
+alpha: 0.1                                  # adversarial regularization loss
+lr: {phi: 5.0e-4, h: 1.0e-3}                  # learning rate phi & h network
+frequency_h: 0.5                            # how many times Phi is updated between H updates, on average
+SN: 2                                       # maximum single layer spectral norm of Phi
+gamma: 10                                   # max 2-norm of a
+classification_loss: "cross-entropy"
+
+# Phi and H Network Architecture
+ni: 11
+not: 4
+nc: 5
+Phi:
+    features: [50, 60, 50]
+    activations: ['relu', 'relu', 'relu']
+H:
+    features: [128]
+    activations: ['relu']

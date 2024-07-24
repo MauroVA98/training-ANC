@@ -1,0 +1,39 @@
+program: main.py
+method: bayes
+metric:
+  goal: minimize
+  name: val/loss_best
+parameters:
+  learning_rate:
+    max: 0.01
+    min: 0.0001
+    distribution: uniform
+  frequency_h:
+    max: 4
+    min: 1
+    distribution: int_uniform
+  phi_shot:
+    max: 512
+    min: 64
+    distribution: int_uniform
+  shuffle:
+    values:
+      - "true"
+      - "false"
+    distribution: categorical
+  K_shot:
+    max: 64
+    min: 8
+    distribution: int_uniform
+  gamma:
+    max: 20
+    min: 5
+    distribution: uniform
+  alpha:
+    max: 0.4
+    min: 0.01
+    distribution: uniform
+  SN:
+    max: 3
+    min: 0
+    distribution: uniform
