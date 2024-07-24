@@ -1,0 +1,33 @@
+{
+    "drone": "bebop",
+    "controller": "baseline",
+    "trajectory": {
+        "name": "minimum snap",
+        "waypoints": 20,
+        "seed": 1015138398767915742,
+        "vel_factor": 1.0,
+        "gamma": 120,
+        "bounds": {
+            "x": {
+                "min": -4.0,
+                "max": 4.0
+            },
+            "y": {
+                "min": -4.0,
+                "max": 4.0
+            },
+            "z": {
+                "min": -0.5,
+                "max": 3.0
+            }
+        },
+        "margins": {
+            "horizontal": 1.3000000000000003,
+            "vertical": [
+                0.3,
+                1.7
+            ],
+            "tracking": 1.2
+        }
+    }
+}
